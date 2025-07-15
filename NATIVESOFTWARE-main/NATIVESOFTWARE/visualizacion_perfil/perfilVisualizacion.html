@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Perfil - Native Social Media</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #1a1a2e; /* Dark background similar to the image */
+            color: #ffffff; /* White text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container-fluid {
+            max-width: 600px; /* Consistent width */
+            background-color: #282a3e; /* Slightly lighter dark background for the form area */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        h1, h2, .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            background: linear-gradient(to right, #8a2be2, #ff69b4); /* Gradient similar to the image's top bar */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: left; /* Align section titles to the left */
+        }
+        .info-label {
+            color: #b0b0c0;
+            font-weight: 500;
+            margin-bottom: 5px; /* Spacing between label and value */
+            display: block; /* Ensure it takes full width */
+        }
+        .info-value {
+            background-color: #3b3d57; /* Darker background for displayed values */
+            border: 1px solid #5a5c70;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px; /* Spacing below each value */
+            word-wrap: break-word; /* Ensure long links wrap */
+        }
+        .info-value.bio {
+            min-height: 100px; /* For biography */
+        }
+        .info-link {
+            color: #ff69b4; /* Pinkish color for links */
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .info-link:hover {
+            color: #8a2be2; /* Purple on hover */
+            text-decoration: underline;
+        }
+        hr {
+            border-color: rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+        }
+        .profile-pic-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .profile-pic-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #8a2be2; /* Accent border */
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        .back-button {
+            display: block;
+            margin-top: 30px;
+            background: linear-gradient(to right, #6a1a9e, #d852a3); /* Gradient for button */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+            color: white; /* Keep text white on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 class="mb-4">Native Social Media</h1>
+        <h2>Perfil de Usuario</h2>
+        <p class="text-center mb-4">Información detallada del perfil</p>
+
+        <h3 class="section-title"><i class="bi bi-person-circle me-2"></i>Foto de Perfil</h3>
+        <hr>
+        <div class="profile-pic-section">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf6258f9?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-pic-preview">
+            </div>
+
+        <h3 class="section-title"><i class="bi bi-info-circle-fill me-2"></i>Información Personal</h3>
+        <hr>
+        <div class="mb-3">
+            <span class="info-label">Nombre Completo:</span>
+            <div class="info-value">Juan Pérez</div>
+        </div>
+
+        <div class="mb-3">
+            <span class="info-label">Nombre de Usuario:</span>
+            <div class="info-value">@juanperezdev</div>
+        </div>
+
+        <div class="mb-3">
+            <span class="info-label">Correo Electrónico:</span>
+            <div class="info-value">juan.perez@example.com</div>
+        </div>
+
+        <div class="mb-3">
+            <span class="info-label">Biografía:</span>
+            <div class="info-value bio">Soy un desarrollador full-stack apasionado por las tecnologías web y el código abierto. Me encanta aprender y colaborar en proyectos innovadores. Experto en React, Node.js y bases de datos NoSQL.</div>
+        </div>
+
+        <div class="mb-3">
+            <span class="info-label">Ubicación:</span>
+            <div class="info-value">Bogotá, Colombia</div>
+        </div>
+
+        <h3 class="section-title"><i class="bi bi-globe me-2"></i>Portafolio y Redes</h3>
+        <hr>
+        <div class="mb-3">
+            <span class="info-label">GitHub:</span>
+            <div class="info-value">
+                <a href="https://github.com/juanperezdev" target="_blank" class="info-link">https://github.com/juanperezdev</a>
+            </div>
+        </div>
+        <div class="mb-3">
+            <span class="info-label">LinkedIn:</span>
+            <div class="info-value">
+                <a href="https://linkedin.com/in/juanperezdev" target="_blank" class="info-link">https://linkedin.com/in/juanperezdev</a>
+            </div>
+        </div>
+        <div class="mb-3">
+            <span class="info-label">Portafolio Personal:</span>
+            <div class="info-value">
+                <a href="https://juanperezdev.com" target="_blank" class="info-link">https://juanperezdev.com</a>
+            </div>
+        </div>
+        <div class="mb-3">
+            <span class="info-label">Twitter/X:</span>
+            <div class="info-value">
+                <a href="https://twitter.com/juanperezdev" target="_blank" class="info-link">https://twitter.com/juanperezdev</a>
+            </div>
+        </div>
+
+        <h3 class="section-title"><i class="bi bi-gear-fill me-2"></i>Preferencias Generales</h3>
+        <hr>
+        <div class="mb-3">
+            <span class="info-label">Tema de la Interfaz:</span>
+            <div class="info-value">Oscuro (Predeterminado)</div>
+        </div>
+
+        <div class="mb-3">
+            <span class="info-label">Notificaciones por Correo Electrónico:</span>
+            <div class="info-value">Sí</div>
+        </div>
+
+        <div class="mb-3">
+            <span class="info-label">Visibilidad del Perfil:</span>
+            <div class="info-value">Público</div>
+        </div>
+
+        <hr class="mt-5">
+
+        <a href="configuracion.html" class="back-button">Volver a Configuración</a>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

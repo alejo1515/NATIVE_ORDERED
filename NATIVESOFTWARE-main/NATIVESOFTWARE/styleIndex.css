@@ -1,0 +1,91 @@
+
+        body {
+            background: linear-gradient(135deg, #0f1c2d, #0a2e4a); /* Dark blue gradient background */
+            color: #e0e0e0; /* Off-white text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Hide overflow from animations */
+            position: relative; /* For the animated background */
+        }
+
+        /* Animated Technology Background (Blue/Cyan Version) */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 123, 255, 0.05) 0%, rgba(23, 162, 184, 0.03) 50%, transparent 100%),
+                        url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPHBhdGggZmlsbD0iIzE0Mjg0ZSIgb3BhY2l0eT0iMC4xIiBkPSJNMCw2NCBMNjQsNjQgTDM2LjU1MSw2Ni40OTMgTDE5LjU4MywyNS4wMjggTDMxLjIzMiwwIEwwLDY0IFoiLz4KICAgIDxwYXRoIGZpbGw9IiMxNDI4NGUiIG9wYWNpdHk9IjAuMSIgZD0iTTMwLjQ0NywwIEwwLDY0IEwzMC40NDcsNjQgTDMwLjQ0NywwIFoiLz4KICAgIDxwYXRoIGZpbGw9IiMxNDI4NGUiIG9wYWNpdHk9IjAuMSIgZD0iTTUwLjk1NSwwIEwwLDY0IEw1MC45NTUsNjQgTDUwLjk1NSwwIFoiLz4KICA8L2c+Cjwvc3ZnPg=='); /* Subtle tech pattern for blue theme */
+            background-size: 32px 32px, 100% 100%; /* Tile pattern, cover gradient */
+            animation: background-scroll 60s linear infinite; /* Slow scroll */
+            z-index: -1; /* Send it to the back */
+        }
+
+        @keyframes background-scroll {
+            from { background-position: 0 0, 0 0; }
+            to { background-position: 1000px 1000px, 0 0; } /* Scroll background pattern */
+        }
+
+        .welcome-container {
+            max-width: 420px;
+            background-color: #1c2e42; /* Slightly lighter dark blue for the card */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1; /* Ensure container is above the animated background */
+        }
+        .app-name {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            background: linear-gradient(to right, #007bff, #17a2b8); /* Blue to cyan gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tagline {
+            color: #b0c4de; /* Lighter blue-grey */
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        .welcome-message {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        .action-button {
+            background: linear-gradient(to right, #007bff, #17a2b8); /* Blue to cyan gradient */
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px; /* Space between buttons */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            text-decoration: none; /* For anchor tags acting as buttons */
+        }
+        .action-button:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5); /* Blue shadow on hover */
+            color: #ffffff; /* Keep text white on hover for anchor tags */
+        }

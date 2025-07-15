@@ -1,0 +1,159 @@
+/* General Body and Container styles for a dark theme */
+body {
+    background-color: #1a1a2e; /* Dark background similar to the image */
+    color: #ffffff; /* White text */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column; /* Allows content to stack vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    padding-top: 65px; /* Adjust based on your navbar height to prevent overlap */
+}
+
+/* Make the main content area grow and handle overflow */
+main {
+    flex-grow: 1; /* Allows main to take up all available space */
+    /* The following centering styles are typically for the *content within* main,
+       not for main itself if it's meant to be a full-width container for a row.
+       If you want to center the *row* inside main, the row should have mx-auto and a max-width.
+       I'm removing the display:flex, align-items, justify-content from main itself
+       as it conflicts with the row structure. */
+    padding-top: 20px; /* Adjust based on your navbar height if needed, but body padding-top should handle it */
+    padding-bottom: 20px; /* Add some padding at the bottom */
+}
+
+/* Ensure the row inside main takes full width for centering */
+main .row {
+    width: 100%;
+}
+
+/* Fade-in animation for content cards */
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Basic styling for user avatars */
+.user-avatar {
+    object-fit: cover;
+}
+
+/* Adjust card shadow for a softer look */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+}
+
+/* Style for badges/tags */
+.badge {
+    padding: 0.5em 0.8em;
+    font-size: 0.8em;
+}
+
+/* Responsive adjustments for smaller screens if needed */
+@media (max-width: 991.98px) {
+    .offcanvas-body .navbar-nav {
+        padding-bottom: 20px; /* Add space above social icons in offcanvas */
+    }
+}
+
+/* Estilos para el botón de Inicio en el navbar */
+.navbar-brand {
+    font-size: 0.95rem; /* Tamaño de fuente ligeramente más pequeño para proporcionalidad */
+    padding: 0.4rem 0.7rem; /* Reduce el padding para un botón más compacto */
+    margin-left: 10px; /* Mantiene un pequeño margen a la izquierda */
+    display: flex; /* Permite alinear el icono y el texto */
+    align-items: center; /* Centra verticalmente el icono y el texto */
+    border: 1px solid #44475a; /* Borde sutil para definir el botón */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    background-color: #2c3a47; /* Fondo oscuro para el botón */
+    color: #f0f0f0; /* Color de texto claro */
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.navbar-brand:hover {
+    background-color: #3b4b5d; /* Cambio de fondo al pasar el ratón */
+    border-color: #5a6a7c;
+    color: #fff;
+}
+
+.navbar-brand i {
+    font-size: 1rem; /* Ajusta el tamaño del icono para que sea proporcional al texto */
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+    color: #8be9fd; /* Color del icono, similar a los botones del menú de configuración */
+}
+
+/* Ajustar el padding general del navbar */
+.navbar {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+/* Estilos para el contenedor principal que envuelve el menú y el formulario */
+.main-content-wrapper {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho total del wrapper */
+    margin: 0 auto; /* Centra el wrapper horizontalmente */
+    padding: 20px; /* Añade padding alrededor del wrapper */
+}
+
+/* Estilos para el contenedor del menú de configuración */
+.config-menu-container {
+    background-color: #2c3a47; /* Dark background, similar to the menu from the first request */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 250px; /* Adjust width as needed */
+    margin-right: 20px; /* Space between menu and form */
+    flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+.config-menu-container h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #44475a;
+}
+
+.config-menu-button {
+    display: flex; /* Use flexbox for icon and text alignment */
+    align-items: center;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border: 1px solid #44475a; /* Dark border */
+    border-radius: 4px;
+    background-color: #2c3a47; /* Dark background */
+    color: #f0f0f0; /* Light text */
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    text-align: left;
+}
+
+.config-menu-button:hover {
+    background-color: #3b4b5d; /* Slightly lighter dark on hover */
+    border-color: #5a6a7c;
+    color: #fff;
+}
+
+.config-menu-button i {
+    margin-right: 10px; /* Space between icon and text */
+    color: #8be9fd; /* Light blue for icons */
+    font-size: 1.2em;
+}

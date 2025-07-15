@@ -1,0 +1,91 @@
+
+
+:root {
+    
+    --dark-bg-primary: #1a2a3a;     
+    --dark-bg-secondary: #2b3b4b;    
+    --dark-text-primary: #e0e6eb;    /* Texto principal claro */
+    --dark-text-secondary: #a7b7c7;  /* Texto secundario/desactivado */
+    --dark-border-color: #3f5060;    /* Bordes sutiles */
+    --dark-input-bg: #1f3040;        /* Fondo de inputs */
+    --dark-input-border: #354555;    
+
+    --blue-accent: #3498db;          /* Azul vibrante para enlaces/botones principales */
+    --blue-accent-hover: #2980b9;    /* Azul más oscuro al pasar el ratón */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--dark-bg-primary); /* Fondo oscuro general */
+    color: var(--dark-text-primary); /* Color de texto principal */
+    line-height: 1.6;
+}
+
+
+.form-registro-card {
+    background-color: var(--dark-bg-secondary); /* Fondo más claro para la tarjeta */
+    border: 1px solid var(--dark-border-color); /* Borde sutil */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+    width: 100%;
+    max-width: 500px; /* Ancho máximo para el formulario */
+}
+
+.form-registro-card .card-title {
+    color: var(--blue-accent); /* Título en azul de acento */
+    font-weight: 700;
+}
+
+.form-label {
+    color: var(--dark-text-primary); /* Etiquetas de campos claras */
+    font-weight: 500;
+}
+
+.form-control {
+    background-color: var(--dark-input-bg); 
+    color: var(--dark-text-primary);
+    border: 1px solid var(--dark-input-border);
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: var(--dark-text-secondary);
+    opacity: 0.7;
+}
+
+.form-control:focus {
+    background-color: var(--dark-input-bg);
+    color: var(--dark-text-primary); 
+    border-color: var(--blue-accent);
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+.form-text {
+    color: var(--dark-text-secondary) !important; 
+    font-size: 0.85em;
+}
+
+
+.custom-submit-btn {
+    background-color: var(--blue-accent); /* Color azul de acento para el botón */
+    border-color: var(--blue-accent); /* Borde del mismo color */
+    color: #fff; /* Texto blanco */
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    padding: 12px 25px; 
+}
+
+.custom-submit-btn:hover {
+    background-color: var(--blue-accent-hover); 
+    border-color: var(--blue-accent-hover);
+    transform: translateY(-2px); 
+    color: #fff; 
+}
+
+@media (max-width: 576px) {
+    .form-registro-card {
+        padding: 20px;
+    }
+}

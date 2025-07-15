@@ -1,0 +1,271 @@
+  /* Estilos específicos para el modo oscuro, si no están ya en muro.css */
+        :root {
+            --dark-bg-primary: #1a2a3a;      /* Fondo principal muy oscuro */
+            --dark-bg-secondary: #2b3b4b;    /* Fondo de tarjetas/secciones */
+            --dark-text-primary: #e0e6eb;    /* Texto principal claro */
+            --dark-text-secondary: #a7b7c7;  /* Texto secundario/desactivado */
+            --dark-border-color: #3f5060;    /* Bordes sutiles */
+            --dark-input-bg: #1f3040;        /* Fondo de inputs */
+            --dark-input-border: #354555;    /* Borde de inputs */
+            --blue-accent: #3498db;          /* Azul vibrante para enlaces/botones principales */
+            --blue-accent-hover: #2980b9;    /* Azul más oscuro al pasar el ratón */
+        }
+
+        body {
+            background-color: var(--dark-bg-primary);
+            color: var(--dark-text-primary);
+            line-height: 1.6;
+        }
+
+        /* Estilos para la barra de navegación y búsqueda */
+        .navbar {
+            background-color: #111b24; /* Un tono aún más oscuro para la barra superior */
+            border-bottom: 1px solid var(--dark-border-color);
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            color: var(--blue-accent) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .search-form .form-control {
+            background-color: var(--dark-input-bg);
+            color: var(--dark-text-primary);
+            border: 1px solid var(--dark-input-border);
+            border-radius: 20px; /* Bordes redondeados para el input de búsqueda */
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .search-form .form-control::placeholder {
+            color: var(--dark-text-secondary);
+        }
+
+        .search-form .form-control:focus {
+            border-color: var(--blue-accent);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+
+        .search-form .btn {
+            background-color: var(--blue-accent);
+            border-color: var(--blue-accent);
+            color: #fff;
+            border-radius: 20px; 
+            padding: 8px 20px;
+            margin-left: 10px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .search-form .btn:hover {
+            background-color: var(--blue-accent-hover);
+            border-color: var(--blue-accent-hover);
+        }
+
+        
+        .wall-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--dark-bg-primary); 
+            border-radius: 8px;
+        }
+
+        .main-title {
+            color: var(--blue-accent);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .create-post-area {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--dark-bg-secondary);
+            border: 1px solid var(--dark-border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .create-post-area:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .profile-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--blue-accent);
+        }
+
+        .prompt-text {
+            flex-grow: 1;
+            color: var(--dark-text-secondary);
+            font-style: italic;
+        }
+
+        .post-icon {
+            font-size: 1.8rem;
+            color: var(--blue-accent);
+        }
+
+
+        .post-card {
+            background-color: var(--dark-bg-secondary);
+            border: 1px solid var(--dark-border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-header .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-header .username {
+            font-weight: bold;
+            color: var(--blue-accent); 
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        .post-header .username:hover {
+            text-decoration: underline;
+        }
+
+        .post-header .timestamp {
+            color: var(--dark-text-secondary);
+            font-size: 0.85em;
+        }
+
+        .post-content p {
+            color: var(--dark-text-primary);
+            margin-bottom: 15px;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid var(--dark-border-color);
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid var(--dark-border-color);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            color: var(--dark-text-secondary);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .post-action:hover {
+            color: var(--blue-accent);
+        }
+
+        .post-action i {
+            margin-right: 5px;
+            font-size: 1.1em;
+        }
+
+        .back-to-home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--blue-accent);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-home-button:hover {
+            background-color: var(--blue-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            color: white; /* Mantener el color blanco en hover */
+        }
+        .back-to-home-button i {
+            font-size: 1.2em;
+        }
+
+        /* Modal specific styles for dark mode */
+        .modal-content {
+            background-color: #1c2e42; /* Darker background for modal */
+            color: var(--dark-text-primary);
+            border: 1px solid #4a6781;
+        }
+        .modal-header {
+            border-bottom: 1px solid #4a6781;
+        }
+        .modal-title {
+            color: var(--blue-accent);
+        }
+        .modal-footer {
+            border-top: 1px solid #4a6781;
+        }
+        .modal .form-control {
+            background-color: var(--dark-input-bg);
+            color: var(--dark-text-primary);
+            border: 1px solid var(--dark-input-border);
+        }
+        .modal .form-control::placeholder {
+            color: var(--dark-text-secondary);
+        }
+        .modal .form-control:focus {
+            border-color: var(--blue-accent);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        .modal .form-label {
+            color: var(--dark-text-primary);
+        }
+        .modal .btn-secondary {
+            background-color: #2a3d50;
+            border-color: #4a6781;
+            color: var(--dark-text-primary);
+        }
+        .modal .btn-secondary:hover {
+            background-color: #3a4d60;
+            border-color: #5a7791;
+        }
+        .modal .btn-primary {
+            background-color: var(--blue-accent);
+            border-color: var(--blue-accent);
+        }
+        .modal .btn-primary:hover {
+            background-color: var(--blue-accent-hover);
+            border-color: var(--blue-accent-hover);
+        }
+        .btn-close { 
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+ 

@@ -1,0 +1,110 @@
+/* Custom CSS for the form - without Bootstrap or CSS variables */
+
+body {
+    /* Pure CSS dark blue background for the entire page */
+    background-color: #1a2a3a; /* Equivalent to --dark-bg-primary */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Added font-family for consistency */
+    color: #e0e6eb; /* Default text color for the body */
+}
+
+.form-wrapper {
+    max-width: 700px;
+    width: 100%;
+    padding: 30px;
+    /* Pure CSS dark background for the form card */
+    background-color: #2b3b4b; /* Equivalent to --dark-bg-secondary */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Darker shadow for dark mode */
+    /* Pure CSS subtle border */
+    border: 1px solid #3f5060; /* Equivalent to --dark-border-color */
+}
+
+.form-wrapper h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    /* Pure CSS light text color for the heading */
+    color: #e0e6eb; /* Equivalent to --dark-text-primary */
+}
+
+.user-info-form {
+    flex-grow: 1;
+}
+
+.username-display-form {
+    font-weight: bold;
+    font-size: 1.1em;
+    /* Changed from #333 to a light text color suitable for dark mode */
+    color: #e0e6eb; /* Light text color for username */
+}
+
+.post-header-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Additional styles to ensure consistent dark mode for form elements
+   that were previously handled by Bootstrap classes or generic .form-control */
+
+.profile-thumb-form { /* Assuming this is for the user's profile pic in the form */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #3498db; /* Blue accent color */
+    cursor: pointer;
+}
+
+.form-label { /* Styling for labels like "Contenido de la Publicación:" */
+    color: #a7b7c7; /* Equivalent to --dark-text-secondary */
+    display: block; /* Ensure labels are on their own line */
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control { /* Styling for input fields and textareas */
+    width: 100%; /* Make inputs take full width */
+    padding: 10px 15px;
+    margin-bottom: 15px; /* Spacing between fields */
+    background-color: #1f3040; /* Equivalent to --dark-input-bg */
+    color: #e0e6eb; /* Equivalent to --dark-text-primary */
+    border: 1px solid #354555; /* Equivalent to --dark-input-border */
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.form-control::placeholder {
+    color: #a7b7c7; /* Lighter placeholder text */
+    opacity: 0.7;
+}
+
+.form-control:focus {
+    outline: none; /* Remove default outline */
+    border-color: #3498db; /* Blue accent on focus */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3); /* Blue shadow on focus */
+}
+
+textarea.form-control {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    min-height: 100px; /* Minimum height for textarea */
+}
+
+.form-text { /* Small helper text below inputs */
+    color: #a7b7c7; /* Equivalent to --dark-text-secondary */
+    font-size: 0.8em;
+    margin-top: -10px; /* Adjust spacing */
+    margin-bottom: 15px;
+    display: block; /* Ensure it's on its own line */
+}
+
+/* Styles for buttons (assuming your HTML uses generic buttons, not Bootstrap .btn classes directly) */
+.btn-primary-custom { /* For the "Publicar" button */
+    display: block; /* Make it a block-level element */
+    width: 100%; /* Full width */
+    padding: 12

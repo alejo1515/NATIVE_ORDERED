@@ -1,0 +1,304 @@
+/* ===== BOOTSTRAP OVERRIDES ===== */
+/* Este archivo contiene solo las sobrescrituras necesarias para Bootstrap */
+
+/* ===== NAVEGACIÓN ===== */
+.navbar.navbar-dark {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-toggler {
+    border: 1px solid var(--border-color);
+    background: transparent;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+}
+
+/* ===== OFFCANVAS ===== */
+.offcanvas {
+    background: var(--background-dark);
+    border-right: 1px solid var(--border-color);
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.offcanvas-title {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ===== NAV LINKS ===== */
+.navbar-nav .nav-link {
+    color: var(--text-secondary);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-nav .nav-link:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    transform: translateX(4px);
+}
+
+.navbar-nav .nav-link.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+}
+
+.btn-secondary {
+    background: var(--background-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* ===== FORMULARIOS ===== */
+.form-control {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--background-dark);
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    background: var(--background-dark);
+    color: var(--text-primary);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control.is-valid {
+    border-color: var(--success-color);
+    background: var(--background-dark);
+}
+
+.form-control.is-invalid {
+    border-color: var(--error-color);
+    background: var(--background-dark);
+}
+
+/* ===== TARJETAS ===== */
+.card {
+    background: var(--background-card);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.card-title {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.card-text {
+    color: var(--text-secondary);
+}
+
+/* ===== LIST GROUP ===== */
+.list-group-item {
+    background: var(--background-card);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.list-group-item:hover {
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.list-group-item-action:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* ===== BADGES ===== */
+.badge {
+    border-radius: var(--border-radius);
+    font-weight: 500;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
+
+.bg-success {
+    background-color: var(--success-color) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning-color) !important;
+}
+
+.bg-info {
+    background-color: var(--primary-color) !important;
+}
+
+/* ===== INPUT GROUP ===== */
+.input-group .form-control {
+    border-right: none;
+}
+
+.input-group .btn {
+    border-left: none;
+    background: var(--background-dark);
+    color: var(--text-secondary);
+}
+
+.input-group .btn:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* ===== MODAL ===== */
+.modal-content {
+    background: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+    color: var(--text-primary);
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+/* ===== UTILIDADES DE TEXTO ===== */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-danger {
+    color: var(--error-color) !important;
+}
+
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.text-info {
+    color: var(--primary-color) !important;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+.display-4 {
+    color: var(--text-primary);
+}
+
+.lead {
+    color: var(--text-secondary);
+}
+
+.h4 {
+    color: var(--text-primary);
+}
+
+.h6 {
+    color: var(--text-primary);
+}
+
+small {
+    color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .form-control {
+        font-size: 16px;
+        /* Evita zoom en iOS */
+    }
+
+    .btn {
+        padding: 0.75rem 1rem;
+    }
+}
