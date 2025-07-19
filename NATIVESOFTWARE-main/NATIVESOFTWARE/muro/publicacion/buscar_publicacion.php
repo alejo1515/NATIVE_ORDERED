@@ -1,8 +1,6 @@
 <?php
 
-
-
-
+// Database connection
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=usuario", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -10,13 +8,11 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-
-
+// Handle search parameters
 $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
 $date = isset($_GET['searchDate']) ? $_GET['searchDate'] : '';
 
-
-
+// Build the SQL query
 $sql = "SELECT idpublicacion, contenido, fechaPublicacion, nombre, links, correo 
         FROM publicaciones 
         WHERE 1=1";
@@ -34,12 +30,12 @@ if (!empty($date)) {
 
 $sql .= " ORDER BY fechaPublicacion DESC LIMIT 10";
 
-
+// Fetch the posts
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
+// Function to format timestamp as human-readable (e.g., "Hace 2 horas")
 function timeAgo($datetime) {
     $now = new DateTime();
     $postTime = new DateTime($datetime);

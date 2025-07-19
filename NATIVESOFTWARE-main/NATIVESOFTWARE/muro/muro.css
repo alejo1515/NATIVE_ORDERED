@@ -1,3 +1,245 @@
+<<<<<<< HEAD
+/* General Body Styles */
+body {
+    background-color: #121212; /* Darker background for contrast with dark card */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0; /* Light text for dark background */
+}
+
+/* Back to Home Button */
+.back-to-home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    color: white; /* Keep text white on hover */
+}
+
+/* Main Container for the Wall */
+.wall-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    /* --- CRITICAL: Ensure these are set for vertical stacking --- */
+    display: flex; /* Use flexbox for spacing/alignment */
+    flex-direction: column; /* This forces items to stack vertically */
+    align-items: center; /* Centers items horizontally within the container */
+    gap: 20px; /* Adds space between post cards */
+}
+
+/* Main Title */
+.main-title {
+    text-align: center;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Search Section */
+.search-section {
+    background-color: #2c2c2c; /* Darker card background */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: none;
+    color: #e0e0e0; /* Light text */
+    width: 100%; /* Ensure it takes full width of wall-container */
+    box-sizing: border-box; /* Include padding/border in width */
+}
+
+.search-section .form-label {
+    font-weight: bold;
+    color: #bbbbbb; /* Slightly lighter label color */
+}
+
+.search-section .form-control {
+    background-color: #3a3a3a; /* Darker input background */
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.search-section .form-control::placeholder {
+    color: #aaaaaa;
+}
+
+.search-section .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    background-color: #3a3a3a; /* Keep dark background on focus */
+    color: #e0e0e0;
+}
+
+/* Post Card Styles (adapted for dark theme) */
+.post-card {
+    background-color: #2c2c2c; /* Dark background */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    /* margin-bottom: 20px; <-- Replaced by gap on wall-container */
+    padding: 20px;
+    color: #e0e0e0; /* Light text for content */
+    width: 100%; /* Ensure it takes full width of wall-container */
+    box-sizing: border-box; /* Include padding/border in width */
+    max-width: 800px; /* Constrain width to match wall-container if needed */
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post-card .profile-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #444; /* Darker border for profile pics */
+    cursor: pointer; /* Indicate clickable for profile pic upload */
+}
+
+.post-card .user-info {
+    display: flex;
+    flex-direction: column; /* Ensure user info stacks vertically */
+}
+
+.post-card .username {
+    font-weight: bold;
+    color: #e0e0e0; /* Light username */
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.post-card .username:hover {
+    color: #0099ff; /* Brighter blue on hover for dark theme */
+}
+
+.post-card .timestamp {
+    color: #999999; /* Lighter gray for timestamp */
+    font-size: 0.85rem;
+}
+
+.post-content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #e0e0e0; /* Light text for paragraphs */
+}
+
+.post-content a {
+    color: #0099ff; /* Brighter blue for links */
+    text-decoration: none;
+}
+
+.post-content a:hover {
+    text-decoration: underline;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: block;
+}
+
+/* Styles specific to the Create Post Card */
+.create-post-card {
+    padding-bottom: 10px; /* Adjust padding for the button */
+}
+
+.create-post-card .username-input {
+    background: transparent;
+    border: none;
+    color: #e0e0e0; /* Match username color */
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0;
+    width: fit-content; /* Adjust width to content */
+    border-bottom: 1px dashed transparent; /* Dashed border for editable field */
+    transition: border-color 0.2s ease;
+}
+
+.create-post-card .username-input:focus {
+    outline: none;
+    border-bottom-color: #007bff; /* Highlight on focus */
+}
+
+.create-post-card .form-control {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 12px 15px;
+    resize: vertical; /* Allow vertical resizing for textarea */
+}
+
+.create-post-card .form-control::placeholder {
+    color: #aaaaaa;
+}
+
+.create-post-card .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
+.create-post-card .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 100%; /* Make button full width */
+}
+
+.create-post-card .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.form-text {
+    color: #aaa !important; /* Lighter muted text */
+    font-size: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wall-container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .search-section,
+    .post-card {
+        padding: 15px;
+    }
+}
+=======
   /* Estilos específicos para el modo oscuro, si no están ya en muro.css */
         :root {
             --dark-bg-primary: #1a2a3a;      /* Fondo principal muy oscuro */
@@ -269,3 +511,4 @@
             filter: invert(1) grayscale(100%) brightness(200%);
         }
  
+>>>>>>> bc23e629a93d1dfd26f1bf5c006dbf68e0216cc4

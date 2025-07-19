@@ -1,4 +1,40 @@
 
+<?php
+session_start();
+
+if(!isset($_SESSION['correo']))
+{
+    header("Location: ../index.html")
+}
+
+
+// Database connection
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=your_database_name", "your_username", "your_password");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+// Fetch the 10 most recent posts
+$stmt = $pdo->prepare("SELECT * FROM posts ORDER BY created_at DESC LIMIT 10");
+$stmt->execute();
+$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Function to format timestamp as human-readable (e.g., "Hace 2 horas")
+function timeAgo($datetime) {
+    $now = new DateTime();
+    $postTime = new DateTime($datetime);
+    $interval = $now->diff($postTime);
+
+    if ($interval->y > 0) return "Hace " . $interval->y . " año" . ($interval->y > 1 ? "s" : "");
+    if ($interval->m > 0) return "Hace " . $interval->m . " mes" . ($interval->m > 1 ? "es" : "");
+    if ($interval->d > 0) return $interval->d == 1 ? "Ayer" : "Hace " . $interval->d . " días";
+    if ($interval->h > 0) return "Hace " . $interval->h . " hora" . ($interval->h > 1 ? "s" : "");
+    if ($interval->i > 0) return "Hace " . $interval->i . " minuto" . ($interval->i > 1 ? "s" : "");
+    return "Justo ahora";
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,10 +43,24 @@
     <title>Muro de Publicaciones - Native Software</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="muro.css"> 
-    
+    <link rel="stylesheet" href="muro.css">
+    <style>
+        .create-post-card {
+            padding: 20px;
+            text-align: center;
+        }
+        .top-right-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
+    <button type="button" class="btn btn-primary top-right-button">
+        <i class="bi bi-person-fill me-2"></i> Buscar Usuario
+    </button>
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
@@ -54,110 +104,55 @@
             </div>
         </div>
 
+        <div class="post-card create-post-card mb-4">
+            <h5 class="card-title mb-3">¿Qué quieres compartir hoy?</h5>
+            <a href="crearPublicacion.html" class="btn btn-success btn-lg w-100">
+                <i class="bi bi-pencil-square me-2"></i> Crear Nueva Publicación
+            </a>
+        </div>
+
         <div class="create-post-button-area mb-4">
             <button class="btn btn-lg btn-block create-post-btn" data-bs-toggle="modal" data-bs-target="#createPostModal">
                 <i class="bi bi-plus-circle-fill me-2"></i> <a href="crearPublicacion.html"> Nueva Publicación</a>
             </button>
         </div>
 
+        <?php foreach ($posts as $post): ?>
         <div class="post-card">
             <div class="post-header">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf6258f9?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-thumb">
+                <img src="<?php echo htmlspecialchars($post['profile_image']); ?>" alt="Foto de Perfil" class="profile-thumb">
                 <div class="user-info">
-                    <a href="../Terceros_perfil/Terceros_perfil.html" class="username">Juan Pérez <i class="bi bi-patch-check-fill ms-1" style="color: #007bff;"></i></a>
-                    <span class="timestamp">Hace 2 horas</span>
+                    <a href="../Terceros_perfil/Terceros_perfil.html" class="username">
+                        <?php echo htmlspecialchars($post['username']); ?>
+                        <?php if ($post['is_verified']): ?>
+                            <i class="bi bi-patch-check-fill ms-1" style="color: #007bff;"></i>
+                        <?php endif; ?>
+                    </a>
+                    <span class="timestamp"><?php echo timeAgo($post['created_at']); ?></span>
                 </div>
             </div>
             <div class="post-content">
-                <p>¡Emocionado de compartir mi nuevo proyecto de desarrollo web! Es un sistema de gestión de tareas construido con React y Node.js. Estoy muy orgulloso del progreso hasta ahora. ¡El código estará pronto en GitHub!</p>
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Project Screenshot">
+                <p><?php echo htmlspecialchars($post['content']); ?></p>
+                <?php if (!empty($post['image_url'])): ?>
+                    <img src="<?php echo htmlspecialchars($post['image_url']); ?>" alt="Post Image">
+                <?php endif; ?>
             </div>
-            </div>
-
-        <div class="post-card">
-            <div class="post-header">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-thumb">
-                <div class="user-info">
-                    <a href="../Terceros_perfil/Terceros_perfil.html" class="username">Ana García</a>
-                    <span class="timestamp">Hace 4 horas</span>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Hoy aprendí una nueva función de Python que me va a ahorrar horas de trabajo. ¡La programación siempre te sorprende! Comparto un enlace a la documentación para quien le interese. #Python #DevTips</p>
-                <p><a href="https://docs.python.org/3/library/collections.html#collections.defaultdict" target="_blank">collections.defaultdict</a></p>
-            </div>
-            </div>
-
-        <div class="post-card">
-            <div class="post-header">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-thumb">
-                <div class="user-info">
-                    <a href="../Terceros_perfil/Terceros_perfil.html" class="username">Carlos Ruiz</a>
-                    <span class="timestamp">Ayer</span>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Estuve trabajando en un diseño de UI/UX para una nueva aplicación móvil. Aquí les dejo un pequeño adelanto de la pantalla de inicio. ¡Espero sus comentarios! ✨</p>
-                <img src="https://images.unsplash.com/photo-1629739775986-7ce22d210515?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="UI/UX Design Screenshot">
-            </div>
-            </div>
-
-        <div class="post-card">
-            <div class="post-header">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-thumb">
-                <div class="user-info">
-                    <a href="../Terceros_perfil/Terceros_perfil.html" class="username">Sofía López <i class="bi bi-patch-check-fill ms-1" style="color: #007bff;"></i></a>
-                    <span class="timestamp">Hace 1 día</span>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>¡Feliz de anunciar que mi artículo sobre "Tendencias en Ciberseguridad para 2025" ya está publicado! Pueden leerlo en el blog de Native Software. ¡La seguridad es clave!</p>
-                <p><a href="https://nativesoftware.com/blog/ciberseguridad-2025" target="_blank">Leer Artículo Completo</a></p>
-            </div>
-            </div>
-
-        <div class="post-card">
-            <div class="post-header">
-                <img src="https://images.unsplash.com/photo-1507003211169-e69adba4c2d9?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-thumb">
-                <div class="user-info">
-                    <a href="../Terceros_perfil/Terceros_perfil.html" class="username">Miguel Torres</a>
-                    <span class="timestamp">Hace 3 días</span>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Primer día del bootcamp de Data Science. ¡Increíble la cantidad de cosas nuevas que se aprenden! Emocionado por el camino que se viene. #DataScience #MachineLearning</p>
-            </div>
-            </div>
-
-        <div class="post-card">
-            <div class="post-header">
-                <img src="https://images.unsplash.com/photo-1607990281513-fa4b52945731?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-thumb">
-                <div class="user-info">
-                    <a href="../Terceros_perfil/Terceros_perfil.html" class="username">Laura Mendoza</a>
-                    <span class="timestamp">Hace 1 semana</span>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Terminando el ciclo de workshops sobre **Agile Methodologies** en la empresa. ¡El feedback del equipo fue genial! Implementar Scrum ha mejorado mucho nuestros tiempos de entrega. 🚀</p>
-                <img src="https://images.unsplash.com/photo-1557804506-669a67965da9?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Agile Workshop">
-            </div>
-            </div>
+        </div>
+        <?php endforeach; ?>
     </div>
 
     <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="createPostModalLabel">Crear Nueva Publicación</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-       
-            
-          </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPostModalLabel">Crear Nueva Publicación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
