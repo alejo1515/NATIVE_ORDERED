@@ -1,6 +1,11 @@
 <?php
 
 
+session_start();
+
+
+
+
 $conexion = mysqli_connect('localhost', 'root', '','usuario')
 
 
@@ -16,10 +21,9 @@ function diferencia($conexion){
 if(isset($_POST['registro'])){
 
 
-$nombre = $_POST["txtusuario"];
     $pass = $_POST["txtcontrasena"];
 
-    $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE correo = '".$nombre."' and contrasena ='".$pass."'");
+    $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE correo = '". $_SESSION["correo"] ."' and contrasena ='".$pass."'");
     $nr = mysqli_num_rows($query);
  
     if($nr == 1)
@@ -40,10 +44,10 @@ $nombre = $_POST["txtusuario"];
 
 
 function actualizar($conexion){
-
+  
+$correo = $_POST['correo'];
 $nombreUsuario = $_POST['nombreUsuario'];
 $nombre = $_POST['nombre'];
-$correo  = $_POST['txtusuario'];
 $contrasena = $_POST['txtcontrasena'];
 $fechaNacimiento = $_POST['fechaNacimiento'];
 $portafolio = $_POST['portafolio'];
@@ -56,8 +60,7 @@ $telefono = $_POST['telefono'];
 $sql ="UPDATE usuario
  SET nombreUsuario = '$nombreUsuario', 
  nombre = '$nombre', 
- contrasena = '$contrasena',
- correo = '$correo', 
+ contrasena = '$contrasena', 
  fechaNacimiento = '$fechaNacimiento', 
  portafolio = '$portafolio', 
  redes = '$redes', 
@@ -65,7 +68,7 @@ $sql ="UPDATE usuario
  bio ='$bio', 
  telefono = '$telefono'
 
-WHERE correo = '$correo'";
+WHERE correo = '" . $_SESSION["correo"] . "'";
 
 mysqli_query($conexion, $sql);
 mysqli_close($conexion);

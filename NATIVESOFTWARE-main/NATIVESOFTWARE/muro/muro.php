@@ -90,11 +90,12 @@ function timeAgo($datetime) {
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav me-auto mb-2 mb-lg-0">
                     <a class="nav-link active" aria-current="page" href="../inicio/index.html">Inicio</a>
+
+
+
                 </div>
-                <form class="d-flex search-form" action="/buscar/buscar_usuarios.php" method="GET">
-                    <input class="form-control me-2" type="search" placeholder="Buscar usuarios (correo, nombre de usuario, nombre)" aria-label="Search" name="busqueda">
-                    <button class="btn" type="submit"><i class="bi bi-search"></i> Buscar</button>
-                </form>
+                    <button class="btn" type="link"><i class="bi bi-search"></i><a href="buscar_usuario/prueba_envedido.php"> Buscar usuario</a></button>
+        
             </div>
         </div>
     </nav>
@@ -171,7 +172,7 @@ function timeAgo($datetime) {
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

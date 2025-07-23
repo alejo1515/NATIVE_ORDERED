@@ -1,4 +1,5 @@
 <?php
+
  $servidor = "localhost";
  $usuario = "root";
  $clave = "";
@@ -13,19 +14,22 @@ if (!$enlace)
 
     die("no hay conexion" .mysqli_connect_error());
 }
-
+ 
+session_start();
 	$nombre = $_POST["txtusuario"];
     $pass = $_POST["txtcontrasena"];
 
     $query = mysqli_query($enlace,"SELECT * FROM usuario WHERE correo = '".$nombre."' and contrasena ='".$pass."'");
-    $nr = mysqli_num_rows($query);
+   if($datos=$query->fetch_object())
 
-    if($nr == 1)
     {
-
-        header("Location: ../inicio/index.html");
+         $_SESSION["correo"] = $datos ->correo;
+          $_SESSION["nombre"] = $datos ->nombre;
+          $_SESSION["nombreUsuario"] = $nombreUsuario ->nombreUsuario;
+        header("Location: ../inicio/index.php");
     }
-  else if ($nr == 0)
-    {  header("Location:phpIngreso_credenciales.html")
+  else
+    { header("Location: phpIngreso.php");
+
     }
 ?>

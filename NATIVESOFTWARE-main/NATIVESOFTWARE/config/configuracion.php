@@ -1,5 +1,10 @@
 
+<?php
 
+session_start();
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -14,11 +19,30 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"> <i class="bi bi-house-door-fill me-2"></i> Inicio
+            <a href="index.html" class="navbar-brand">
+                <i class="bi bi-code-slash me-2"></i>
+                Native Social Media
+            </a>
+
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../inicio/index.html"> <i class="bi bi-house-door-fill me-2"></i> Inicio
             </a>
             </div>
+
+    <div class="text-white bg-success p-2">
+                    <?php
+                     if(isset($_SESSION["nombre"]) && $_SESSION["correo"]){
+                       echo "{$_SESSION["nombre"]} {$_SESSION["correo"]}";
+                     }
+                   
+                    ?>
+
+                    </div>
+
+
     </nav>
 
 
@@ -37,13 +61,54 @@
                 </button></a>
              
  
-                <a href="../eliminar_cuenta/eliminar.php">
+                <a href="eliminar.php">
                 <button class="config-menu-button delete-action">
                     <i class="bi bi-person-x-fill"></i> Eliminar Usuario
                 </button></a>
                 
 
-                <a href="../cerrar_sesion/cerrar.php"></a>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+  Eliminar Perfil
+</button>
+
+
+
+
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-white" style="background-color: #212529;"> <div class="modal-header border-bottom border-primary"> <h5 class="modal-title" id="confirmDeleteModalLabel" style="color: #0d6efd;">Confirmar Eliminación de Perfil</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p class="lead text-center mb-4">¿Estás seguro de que deseas eliminar tu perfil de usuario?</p>
+        <p class="text-center text-muted mb-4">Esta acción es irreversible y eliminará todos tus datos.</p>
+
+        <form>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label text-primary">Ingresa tu contraseña para confirmar:</label>
+            <input type="password" class="form-control bg-dark text-white border-primary" id="passwordInput" placeholder="Contraseña" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-top border-primary justify-content-center"> <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary">Sí, Eliminar</button>
+      </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+                <a href="cerrar.php"></a>
                 <button class="config-menu-button logout-action">
                     <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
                 </button>
@@ -57,13 +122,7 @@
 
                     <h3 class="section-title"><i class="bi bi-shield-lock-fill me-2"></i>Confirmar Identidad</h3>
                     <hr>
-                    <div class="mb-3">
-                        <label for="confirmEmail" class="form-label">Correo Electrónico</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-transparent border-0"><i class="bi bi-envelope-fill"></i></span>
-                            <input type="email" class="form-control" id="txtusuario" name="txtusuario" placeholder="Tu correo electrónico registrado" required>
-                        </div>
-                    </div>
+                  
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Contraseña Actual</label>
                         <div class="input-group">
@@ -181,6 +240,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

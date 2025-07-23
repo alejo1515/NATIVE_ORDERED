@@ -1,3 +1,6 @@
+
+<
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,7 +23,7 @@
         <form id="loginForm" method="post" action="phpIngreso.php" name="usuario">
 
             <?php
-            include"controlador.php"
+            include"phpIngreso.php"
             ?>
             
             <div class="mb-3">
