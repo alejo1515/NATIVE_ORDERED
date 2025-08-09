@@ -11,7 +11,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
+session_start();
 
+if (empty($_SESSION["correo"])) {
+
+    header("location:../index.html");}
 // Obtener término de búsqueda
 $busqueda = isset($_POST['busqueda']) ? trim($_POST['busqueda']) : '';
 $hasSearched = !empty($busqueda); // Track if a search was performed
@@ -37,7 +41,7 @@ if ($hasSearched) {
     <link rel="stylesheet" href="buscar_usuario.css">
 </head>
 <body>
-    <a href="../../inicio/index.html" class="home-button">Inicio</a>
+    <a href="../../inicio/index.php" class="home-button">Inicio</a>
 
     <div class="container">
         <h1>Buscar Perfil</h1>

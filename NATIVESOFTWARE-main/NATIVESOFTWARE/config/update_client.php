@@ -29,7 +29,7 @@ if(isset($_POST['registro'])){
     if($nr == 1)
     {
        actualizar($conexion);
-        header("Location: ../inicio/index.html");
+        header("Location: ../inicio/index.php");
     }
   else if ($nr == 0)
     {  header("Location:configuracion.html");

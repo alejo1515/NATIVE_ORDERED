@@ -2,6 +2,11 @@
 
 session_start();
 
+if (empty($_SESSION["correo"])) {
+
+    header("location:../index.html");
+}
+
 ?>
 
 
@@ -73,7 +78,7 @@ session_start();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../chat/chat.html" class="nav-link">
+                            <a href="../chat/chat.php" class="nav-link">
                                 <i class="bi bi-chat-dots"></i>
                                 Chat
                             </a>
@@ -85,7 +90,7 @@ session_start();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../validacion_ingreso/phpIngreso_credenciales.html" class="nav-link text-danger">
+                            <a href="../logout/log_out.php" class="nav-link text-danger">
                                 Salir
                             </a>
                         </li>
@@ -93,12 +98,16 @@ session_start();
 
                               <div class="offcanvas-body d-flex flex-column justify-content-between">
 
+
+
+
                     <nav class="bs-example mb-0">
                        <div class="text-white bg-success p-2">
                     <?php
-                     if(isset($_SESSION["nombre"]) && $_SESSION["correo"]){
+
+                
                        echo "{$_SESSION["nombre"]} {$_SESSION["correo"]}";
-                     }
+                    
                    
                     ?>
 
@@ -106,6 +115,9 @@ session_start();
 
                     </nav>
                     </ul>
+
+
+
 
                     <!-- Redes Sociales -->
                     <div class="d-lg-none text-center py-3">

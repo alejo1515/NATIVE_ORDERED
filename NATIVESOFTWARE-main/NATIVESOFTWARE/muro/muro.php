@@ -1,7 +1,11 @@
 <?php
 
+session_start();
 
+if (empty($_SESSION["correo"])) {
 
+    header("location:../index.html");
+}
 
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=usuario", "root", "");
@@ -63,25 +67,30 @@ function timeAgo($datetime) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="muro.css">
-    <style>
-        .create-post-card {
-            padding: Ricci    20px;
-            text-align: center;
-        }
-        .top-right-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-        }
-    </style>
+    
 </head>
 <body>
+
+
     <button type="button" class="btn btn-primary top-right-button">
         <i class="bi bi-person-fill me-2"></i> Buscar Usuario
     </button>
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="bs-example mb-0">
+                       <div class="text-white bg-success p-2">
+                    <?php
+
+                    
+                     if(isset($_SESSION["nombre"]) && $_SESSION["correo"]){
+                       echo "{$_SESSION["nombre"]} {$_SESSION["correo"]}";
+                     }
+                   
+                    ?>
+
+                    </div>
+
+                    </nav>
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Native Software</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,7 +98,7 @@ function timeAgo($datetime) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <a class="nav-link active" aria-current="page" href="../inicio/index.html">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="../inicio/index.php">Inicio</a>
 
 
 
@@ -128,14 +137,14 @@ function timeAgo($datetime) {
 
         <div class="post-card create-post-card mb-4">
             <h5 class="card-title mb-3">¿Qué quieres compartir hoy?</h5>
-            <a href="crearPublicacion.html" class="btn btn-success btn-lg w-100">
+            <a href="crearPublicacion.php" class="btn btn-success btn-lg w-100">
                 <i class="bi bi-pencil-square me-2"></i> Crear Nueva Publicación
             </a>
         </div>
 
         <div class="create-post-button-area mb-4">
             <button class="btn btn-lg btn-block create-post-btn" data-bs-toggle="modal" data-bs-target="#createPostModal">
-                <i class="bi bi-plus-circle-fill me-2"></i> <a href="crearPublicacion.html"> Nueva Publicación</a>
+                <i class="bi bi-plus-circle-fill me-2"></i> <a href="crearPublicacion.php"> Nueva Publicación</a>
             </button>
         </div>
 

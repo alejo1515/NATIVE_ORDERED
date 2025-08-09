@@ -33,11 +33,9 @@ $consulta ="INSERT INTO publicaciones(correo, contenido,fechaPublicacion, nombre
 mysqli_query($conexion, $consulta);
 mysqli_close($conexion);
 
-header('Location:muro.html');
+header('Location:muro.php');
 
-=======
 
-header("Location: muro.html");
 
 }
 

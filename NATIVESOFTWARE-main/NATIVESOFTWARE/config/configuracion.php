@@ -3,6 +3,11 @@
 
 session_start();
 
+if (empty($_SESSION["correo"])) {
+
+    header("location:../index.html");
+}
+
 
 ?>
 
@@ -28,7 +33,7 @@ session_start();
 
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="../inicio/index.html"> <i class="bi bi-house-door-fill me-2"></i> Inicio
+            <a class="navbar-brand" href="../inicio/index.php"> <i class="bi bi-house-door-fill me-2"></i> Inicio
             </a>
             </div>
 
@@ -71,9 +76,6 @@ session_start();
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-  Eliminar Perfil
-</button>
 
 
 

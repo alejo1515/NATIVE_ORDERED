@@ -1,0 +1,212 @@
+
+body {
+    background-color: #1a1a2e; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro para contraste */
+    font-family: 'Inter', sans-serif; /* Fuente moderna */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #0d131b !important; /* Azul oscuro para la barra de navegación */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    color: #142543 !important; /* Color de acento para la marca */
+    font-weight: 700;
+    transition: color 0.3s ease; /* Transición para el efecto hover */
+}
+
+.navbar-brand:hover {
+    color: #fff !important; /* Color blanco al pasar el cursor */
+}
+
+.navbar-nav .nav-link {
+    color: #e0e0e0 !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #3b1737 !important; /* Color de acento al pasar el cursor */
+}
+
+.btn-outline-light {
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: #280c22;
+    border-color: #090707;
+    color: #fff;
+    transform: translateY(-2px); /* Ligeramente elevado al pasar el cursor */
+}
+
+/* Main Chat Container */
+.chat-container {
+    display: flex;
+    flex: 1;
+    margin-top: 56px;
+    overflow: hidden;
+}
+
+/* Messages Panel */
+.messages-panel {
+    flex: 1;
+    padding: 20px;
+    background-color: #1e324b;
+    overflow-y: auto;
+    border-right: 1px solid #1a1a2e;
+}
+
+.main-title {
+    color: #e0e0e0;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Search Panel */
+.search-panel {
+    width: 350px;
+    padding: 20px;
+    background-color: #070e21;
+    border-left: 1px solid #0f3460;
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-panel .card-title {
+    color: #e0e0e0;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.search-panel .form-label {
+    color: #b0b0b0;
+}
+
+.search-panel .form-control {
+    background-color: #010101;
+    border: 1px solid #2b2b4a;
+    color: #e0e0e0;
+    transition: all 0.3s ease; /* Transición para el enfoque */
+}
+
+.search-panel .form-control:focus {
+    border-color: #470650;
+    box-shadow: 0 0 5px rgba(233, 69, 96, 0.5);
+}
+
+.search-panel .form-control::placeholder {
+    color: #888;
+}
+
+.search-panel .btn-primary {
+    background-color: #330f356c;
+    border-color: #3e1d36;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-panel .btn-primary:hover {
+    background-color: #2d0627;
+    transform: translateY(-2px);
+}
+
+/* Message Card Styles */
+.message-card {
+    background-color: #16213e;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #0f3460;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-3px); /* Se eleva ligeramente */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+.message-user {
+    font-weight: bold;
+    color: #8ab4f8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.message-user:hover {
+    color: #bbdefb; /* Color más claro al pasar el cursor */
+}
+
+.message-timestamp {
+    font-size: 0.8em;
+    color: #a0a0a0;
+}
+
+.message-content p {
+    margin-bottom: 5px;
+    color: #d0d0d0;
+    line-height: 1.5;
+}
+
+/* Form Container for New Messages */
+.form-container {
+    max-width: 100%;
+    margin-bottom: 25px;
+    padding: 2.5rem;
+    background-color: #1e1e3e;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid #0f3460;
+}
+
+.form-container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e94560;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-container .form-label {
+    font-weight: 500;
+    color: #b0b0b0;
+}
+
+.form-container .form-control {
+    background-color: #0f3460;
+    border: 1px solid #2b2b4a;
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container .form-control:focus {
+    border-color: #7c45e9;
+    box-shadow: 0 0 0 0.25rem rgba(233, 69, 96, 0.25);
+    background-color: #0f3460;
+}
+
+.form-container .btn-primary {
+    background-color: #0d2f4f;
+    border-color: #4a2442;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-container .btn-primary:hover {
+    background-color: #71b7e2;
+    border-color: #e8647c;
+    transform: translateY(-2px); /* Se eleva al pasar el cursor */
+}

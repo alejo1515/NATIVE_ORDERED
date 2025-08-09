@@ -21,9 +21,6 @@
 
         <form id="loginForm" method="post" action="phpIngreso.php" name="usuario">
 
-            <?php
-            include"phpIngreso.php"
-            ?>
             
             <div class="mb-3">
                 <label for="usuario" class="form-label">Usuario:</label>
@@ -49,20 +46,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const togglePasswordVisibility = document.getElementById('togglePasswordVisibility');
-            const passwordInput = document.getElementById('contrasena');
 
-            if (togglePasswordVisibility && passwordInput) {
-                togglePasswordVisibility.addEventListener('click', function() {
-                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                    passwordInput.setAttribute('type', type);
-                    this.querySelector('i').classList.toggle('bi-eye-fill');
-                    this.querySelector('i').classList.toggle('bi-eye-slash-fill');
-                });
-            }
-        });
-    </script>
 </body>
 </html>
